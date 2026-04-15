@@ -21,9 +21,18 @@ public class Base64Encoder {
         StringBuilder encoded = new StringBuilder();
 
         // Step 3: Convert each 6-bit group
+        for (int i=0;i<binary.length(); i+=6){
+            String chunk = binary.substring(i, i+6);
+            int index = Integer.parseInt(chunk, 2);
+            encoded.append(Base64Table.TABLE.charAt(index));
+        }
 
 
         // Step 4: Add "=" padding
+        int padding = (3 - input.length() % 3) % 3;
+        for (int i=0; i<padding; i++){
+            encoded.append("=");
+        }
 
         return encoded.toString();
     }
