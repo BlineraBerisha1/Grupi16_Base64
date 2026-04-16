@@ -18,12 +18,25 @@ public class Base64Decoder {
             String bin = String.format("%6s", Integer.toBinaryString(value))
                     .replace(' ', '0');
             binary.append(bin);
-
-                    // perfshirja per return
-                 StringBuilder decoded = new StringBuilder();
-
             }
-            return decoded.toString();
+           
+
+        if (padding > 0) {
+            binary.setLength(binary.length() - padding * 2);
+        }
+
+        StringBuilder decoded = new StringBuilder();
+
+        
+        for (int i = 0; i + 8 <= binary.length(); i += 8) {
+            String byteStr = binary.substring(i, i + 8);
+            int charCode = Integer.parseInt(byteStr, 2);
+            decoded.append((char) charCode);
+        }
+
+
+
+        return decoded.toString();
             
         } 
                
