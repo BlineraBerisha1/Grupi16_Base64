@@ -16,7 +16,7 @@ public class Main {
         System.out.print("Choose option: ");
 
         int choice = scanner.nextInt();
-        scanner.nextLine(); // consume newline
+        scanner.nextLine();
 
         System.out.print("Enter text: ");
         String input = scanner.nextLine();

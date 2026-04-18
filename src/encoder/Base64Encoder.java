@@ -2,8 +2,6 @@ package encoder;
 import utils.Base64Table;
 
 public class Base64Encoder {
-
-    //
     public static String encode(String input) {
         StringBuilder binary = new StringBuilder();
 
@@ -27,12 +25,9 @@ public class Base64Encoder {
             encoded.append(Base64Table.TABLE.charAt(index));
         }
 
-
         // Step 4: Add "=" padding
         int padding = (3 - input.length() % 3) % 3;
-        for (int i=0; i<padding; i++){
-            encoded.append("=");
-        }
+        encoded.append("=".repeat(padding));
 
         return encoded.toString();
     }
